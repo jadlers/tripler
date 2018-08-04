@@ -18,6 +18,9 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
+# Environment variables
+.env
+
 # Recommended by Kent C. Dodds
 package-lock.json
 yarn.lock
