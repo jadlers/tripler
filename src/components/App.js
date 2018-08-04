@@ -15,22 +15,32 @@ class App extends Component {
     };
   }
 
+  loginUser(authUser) {
+    authUser
+      .getIdToken()
+      .then(userToken => {
+        this.setState({ userToken });
+        localStorage.setItem('userToken', userToken);
+      })
+      .catch(error => {
+        console.log('Error getting user token:' + error);
+        this.setState({ ...this.state, userToken: null });
+        localStorage.removeItem('userToken');
+      });
+  }
+
+  logoutUser() {
+    firebase.auth().signOut();
+    localStorage.removeItem('userToken');
+    this.setState({ ...this.state, userToken: null });
+  }
+
   componentDidMount() {
     firebase.auth().onAuthStateChanged(authUser => {
       if (authUser) {
-        authUser
-          .getIdToken()
-          .then(userToken => {
-            console.log(userToken);
-            this.setState({ userToken });
-            localStorage.setItem('userToken', userToken);
-          })
-          .catch(() => {
-            this.setState({ ...this.state, userToken: null });
-            localStorage.removeItem('userToken');
-          });
+        this.loginUser(authUser);
       } else {
-        localStorage.removeItem('userToken');
+        this.logoutUser();
       }
     });
   }
@@ -44,7 +54,12 @@ class App extends Component {
         <Route
           exact
           path="/"
-          component={() => <HomePage firebase={firebase} />}
+          component={() => (
+            <HomePage
+              firebase={firebase}
+              logoutUser={() => this.logoutUser()}
+            />
+          )}
         />
       </div>
     </Router>

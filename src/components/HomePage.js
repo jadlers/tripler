@@ -1,14 +1,13 @@
 import React from 'react';
 
-const HomePage = ({ loggedIn, firebase }) => {
-  console.log('Got to homepage');
+const HomePage = ({ logoutUser, firebase }) => {
+  const user = firebase.auth().currentUser;
 
-  // const { currentUser } = firebase.auth();
   return (
     <div>
       <h1>Home</h1>
-      <button onClick={() => firebase.auth().signOut()}>Log out</button>
-      <p>Welcome!</p>
+      <button onClick={logoutUser}>Log out</button>
+      <p>Welcome {user && user.displayName}!</p>
     </div>
   );
 };
