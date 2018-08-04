@@ -11,7 +11,10 @@ const LandingPage = ({ userToken, firebase }) => {
     // provide a callbacks.signInSuccess function.
     signInSuccessUrl: routes.LANDING,
     // We will display Google and Facebook as auth providers.
-    signInOptions: [firebase.auth.GoogleAuthProvider.PROVIDER_ID],
+    signInOptions: [
+      firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+      firebase.auth.EmailAuthProvider.PROVIDER_ID,
+    ],
   };
 
   return (
