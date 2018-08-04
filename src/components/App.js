@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
+import firebase from '../firebase/firebase.js';
 
 import HomePage from './HomePage.js';
 import LoginPage from './LoginPage.js';
@@ -22,7 +23,11 @@ class App extends Component {
             component={() => <LandingPage />}
           />
           <Route exact path={routes.HOME} component={() => <HomePage />} />
-          <Route exact path={routes.LOGIN} component={() => <LoginPage />} />
+          <Route
+            exact
+            path={routes.LOGIN}
+            component={() => <LoginPage firebase={firebase} />}
+          />
         </div>
       </Router>
     );
