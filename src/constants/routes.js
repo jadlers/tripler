@@ -1,4 +1,2 @@
-export const LANDING = '/';
-export const HOME = '/home';
+export const START = '/';
 export const LOGIN = '/login';
-export const LOGOUT = '/logout';

@@ -3,13 +3,13 @@ import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
 
 import * as routes from '../constants/routes.js';
 
-const LandingPage = ({ userToken, firebase }) => {
+const WelcomePage = ({ userToken, firebase }) => {
   const uiConfig = {
     // Redirect signin flow rather than popup flow.
     signInFlow: 'redirect',
     // Redirect to /signedIn after sign in is successful. Alternatively you can
     // provide a callbacks.signInSuccess function.
-    signInSuccessUrl: routes.LANDING,
+    signInSuccessUrl: routes.START,
     // We will display Google and Facebook as auth providers.
     signInOptions: [
       firebase.auth.GoogleAuthProvider.PROVIDER_ID,
@@ -35,4 +35,4 @@ const LandingPage = ({ userToken, firebase }) => {
   );
 };
 
-export default LandingPage;
+export default WelcomePage;

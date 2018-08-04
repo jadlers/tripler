@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import firebase from '../firebase/firebase.js';
 
 import HomePage from './HomePage.js';
-import LandingPage from './LandingPage.js';
+import WelcomePage from './WelcomePage.js';
 
 class App extends Component {
   constructor(props) {
@@ -71,7 +71,7 @@ class App extends Component {
    * sign in.
    */
   noUser = () => (
-    <LandingPage userToken={this.state.userToken} firebase={firebase} />
+    <WelcomePage userToken={this.state.userToken} firebase={firebase} />
   );
 
   render() {
