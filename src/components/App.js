@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import firebase from '../firebase/firebase.js';
 
 import HomePage from './HomePage.js';
+import LoginPage from './LoginPage.js';
 import WelcomePage from './WelcomePage.js';
+
+import * as routes from '../constants/routes.js';
 
 class App extends Component {
   constructor(props) {
@@ -50,18 +53,7 @@ class App extends Component {
    */
   userLoggedIn = () => (
     <Router>
-      <div>
-        <Route
-          exact
-          path="/"
-          component={() => (
-            <HomePage
-              firebase={firebase}
-              logoutUser={() => this.logoutUser()}
-            />
-          )}
-        />
-      </div>
+      <HomePage firebase={firebase} logoutUser={() => this.logoutUser()} />
     </Router>
   );
 
@@ -71,7 +63,15 @@ class App extends Component {
    * sign in.
    */
   noUser = () => (
-    <WelcomePage userToken={this.state.userToken} firebase={firebase} />
+    <Router>
+      <Switch>
+        <Route
+          path={routes.LOGIN}
+          component={() => <LoginPage firebase={firebase} />}
+        />
+        <Route component={() => <WelcomePage />} />
+      </Switch>
+    </Router>
   );
 
   render() {

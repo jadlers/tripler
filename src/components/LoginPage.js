@@ -7,10 +7,12 @@ const LoginPage = ({ firebase }) => {
   const uiConfig = {
     // Redirect signin flow rather than popup flow.
     signInFlow: 'redirect',
-    // Redirect to /signedIn after sign in is successful. Alternatively you can provide a callbacks.signInSuccess function.
-    signInSuccessUrl: routes.HOME,
-    // We will display Google and Facebook as auth providers.
-    signInOptions: [firebase.auth.GoogleAuthProvider.PROVIDER_ID],
+    signInSuccessUrl: routes.START,
+    // We will display Google and email + password as auth providers.
+    signInOptions: [
+      firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+      firebase.auth.EmailAuthProvider.PROVIDER_ID,
+    ],
   };
 
   return (
