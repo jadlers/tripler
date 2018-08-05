@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
 import firebase from '../firebase/firebase.js';
 import firebaseui from 'firebaseui';
@@ -19,7 +20,10 @@ const LoginPage = () => {
   };
 
   return (
-    <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={firebase.auth()} />
+    <div>
+      <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={firebase.auth()} />
+      <Link to={routes.START}>BACK</Link>
+    </div>
   );
 };
 
