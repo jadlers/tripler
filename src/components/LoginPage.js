@@ -1,5 +1,6 @@
 import React from 'react';
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
+import firebaseui from 'firebaseui';
 
 import * as routes from '../constants/routes.js';
 
@@ -13,6 +14,7 @@ const LoginPage = ({ firebase }) => {
       firebase.auth.GoogleAuthProvider.PROVIDER_ID,
       firebase.auth.EmailAuthProvider.PROVIDER_ID,
     ],
+    credentialHelper: firebaseui.auth.CredentialHelper.NONE,
   };
 
   return (
