@@ -1,10 +1,11 @@
 import React from 'react';
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
+import firebase from '../firebase/firebase.js';
 import firebaseui from 'firebaseui';
 
 import * as routes from '../constants/routes.js';
 
-const LoginPage = ({ firebase }) => {
+const LoginPage = () => {
   const uiConfig = {
     // Redirect signin flow rather than popup flow.
     signInFlow: 'redirect',

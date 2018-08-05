@@ -53,7 +53,7 @@ class App extends Component {
    */
   userLoggedIn = () => (
     <Router>
-      <HomePage firebase={firebase} logoutUser={() => this.logoutUser()} />
+      <HomePage logoutUser={() => this.logoutUser()} />
     </Router>
   );
 
@@ -65,11 +65,8 @@ class App extends Component {
   noUser = () => (
     <Router>
       <Switch>
-        <Route
-          path={routes.LOGIN}
-          component={() => <LoginPage firebase={firebase} />}
-        />
-        <Route component={() => <WelcomePage />} />
+        <Route path={routes.LOGIN} component={() => <LoginPage />} />
+        <Route path={routes.START} component={() => <WelcomePage />} />
       </Switch>
     </Router>
   );

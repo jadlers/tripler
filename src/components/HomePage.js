@@ -1,6 +1,7 @@
 import React from 'react';
+import firebase from '../firebase/firebase.js';
 
-const HomePage = ({ logoutUser, firebase }) => {
+const HomePage = ({ logoutUser }) => {
   const user = firebase.auth().currentUser;
   let welcomeName = '';
   if (user && user.displayName) {
