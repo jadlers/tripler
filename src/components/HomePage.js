@@ -2,6 +2,7 @@ import React from 'react';
 import firebase from '../firebase/firebase';
 
 import Header from './Header';
+import LogoutSymbol from '../assets/LogoutSymbol.svg';
 
 const HomePage = ({ logoutUser }) => {
   const user = firebase.auth().currentUser;
@@ -12,11 +13,16 @@ const HomePage = ({ logoutUser }) => {
     welcomeName = user.email.split('@')[0];
   }
 
-  const headerActions = [
-    <button key="logoutUser" onClick={logoutUser}>
-      Log out
-    </button>,
-  ];
+  const logoutAction = (
+    <img
+      key="logoutAction"
+      src={LogoutSymbol}
+      alt="Log out"
+      onClick={logoutUser}
+    />
+  );
+
+  const headerActions = [logoutAction];
 
   return (
     <div>
