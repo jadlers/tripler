@@ -3,13 +3,16 @@ import { Link } from 'react-router-dom';
 
 import * as routes from '../constants/routes';
 import Header from './Header';
+import LoginSymbol from '../assets/UserSymbol.svg';
+
+const LoginAction = (
+  <Link key="routes.LOGIN" to={routes.LOGIN}>
+    <img src={LoginSymbol} alt="Sign in" />
+  </Link>
+);
 
 const WelcomePage = () => {
-  const headerActions = [
-    <Link key="routes.LOGIN" to={routes.LOGIN}>
-      Sign in
-    </Link>,
-  ];
+  const headerActions = [LoginAction];
 
   return (
     <div>
