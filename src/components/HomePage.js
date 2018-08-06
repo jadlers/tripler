@@ -1,6 +1,8 @@
 import React from 'react';
 import firebase from '../firebase/firebase';
 
+import Header from './Header';
+
 const HomePage = ({ logoutUser }) => {
   const user = firebase.auth().currentUser;
   let welcomeName = '';
@@ -10,10 +12,15 @@ const HomePage = ({ logoutUser }) => {
     welcomeName = user.email.split('@')[0];
   }
 
+  const headerActions = [
+    <button key="logoutUser" onClick={logoutUser}>
+      Log out
+    </button>,
+  ];
+
   return (
     <div>
-      <h1>Home</h1>
-      <button onClick={logoutUser}>Log out</button>
+      <Header title="Home" actions={headerActions} />
       <p>Welcome {welcomeName}</p>
     </div>
   );

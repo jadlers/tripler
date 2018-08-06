@@ -2,14 +2,18 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import * as routes from '../constants/routes';
+import Header from './Header';
 
 const WelcomePage = () => {
+  const headerActions = [
+    <Link key="routes.LOGIN" to={routes.LOGIN}>
+      Sign in
+    </Link>,
+  ];
+
   return (
     <div>
-      <header>
-        <h1>TripleR</h1>
-        <Link to={routes.LOGIN}>Sign in</Link>
-      </header>
+      <Header title={'TripleR'} actions={headerActions} />
       <p>
         Welcome to TripleR which is short for reflect, record, and remember.
       </p>
