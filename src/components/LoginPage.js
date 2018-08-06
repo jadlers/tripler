@@ -1,10 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
-import firebase from '../firebase/firebase.js';
+import firebase from '../firebase/firebase';
 import firebaseui from 'firebaseui';
 
-import * as routes from '../constants/routes.js';
+import * as routes from '../constants/routes';
 
 const LoginPage = () => {
   const uiConfig = {

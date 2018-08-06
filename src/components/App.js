@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import firebase from '../firebase/firebase.js';
+import firebase from '../firebase/firebase';
+import * as routes from '../constants/routes';
 
-import HomePage from './HomePage.js';
-import LoginPage from './LoginPage.js';
-import WelcomePage from './WelcomePage.js';
-
-import * as routes from '../constants/routes.js';
+import HomePage from './HomePage';
+import LoginPage from './LoginPage';
+import WelcomePage from './WelcomePage';
 
 class App extends Component {
   constructor(props) {
