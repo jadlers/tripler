@@ -1,8 +1,17 @@
 import React from 'react';
 import firebase from '../firebase/firebase';
+import styled from 'styled-components';
+
+import ExitToAppRounded from '@material-ui/icons/ExitToAppRounded';
+import Card from '@material-ui/core/Card';
+import CardContent from '@material-ui/core/CardContent';
+import IconButton from '@material-ui/core/IconButton';
 
 import Header from './Header';
-import LogoutSymbol from '../assets/LogoutSymbol.svg';
+
+const StyledCard = styled(Card)`
+  margin: 0.5em;
+`;
 
 const HomePage = ({ logoutUser }) => {
   const user = firebase.auth().currentUser;
@@ -14,12 +23,9 @@ const HomePage = ({ logoutUser }) => {
   }
 
   const logoutAction = (
-    <img
-      key="logoutAction"
-      src={LogoutSymbol}
-      alt="Log out"
-      onClick={logoutUser}
-    />
+    <IconButton onClick={logoutUser} key="logoutUser" color="inherit">
+      <ExitToAppRounded />
+    </IconButton>
   );
 
   const headerActions = [logoutAction];
@@ -27,7 +33,9 @@ const HomePage = ({ logoutUser }) => {
   return (
     <div>
       <Header title="Home" actions={headerActions} />
-      <p>Welcome {welcomeName}</p>
+      <StyledCard>
+        <CardContent>Welcome {welcomeName}</CardContent>
+      </StyledCard>
     </div>
   );
 };
