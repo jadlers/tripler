@@ -16,6 +16,9 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "prettier": "prettier src/*/*.js --write --single-quote --trailing-comma es5"
+    "format": "prettier --write --single-quote --trailing-comma=es5 src/**/*.{js,jsx,json,css} *.{json,yaml,md}"
+  },
+  "devDependencies": {
+    "prettier": "1.14.2",
   }
 }
