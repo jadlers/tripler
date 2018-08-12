@@ -1,18 +1,18 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import Button from '@material-ui/core/Button';
 
 import * as routes from '../constants/routes';
 import Header from './Header';
-import LoginSymbol from '../assets/UserSymbol.svg';
 
-const LoginAction = (
-  <Link key="routes.LOGIN" to={routes.LOGIN}>
-    <img src={LoginSymbol} alt="Sign in" />
-  </Link>
+const LoginButton = (
+  <Button key="loginButton" component={Link} to={routes.LOGIN} color="inherit">
+    Login
+  </Button>
 );
 
 const WelcomePage = () => {
-  const headerActions = [LoginAction];
+  const headerActions = [LoginButton];
 
   return (
     <div>
