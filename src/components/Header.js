@@ -5,17 +5,25 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 
-const StyledTypography = styled(Typography)`
+const ActionItems = styled.div`
+  display: flex;
   flex-grow: 1;
+  justify-content: flex-end;
+`;
+
+const Title = styled(Typography)`
+  cursor: default;
 `;
 
 const Header = ({ title, actions }) => (
   <AppBar position="static" color="primary">
     <Toolbar>
-      <StyledTypography variant="title" color="inherit">
+      <Title variant="title" color="inherit">
         {title}
-      </StyledTypography>
-      {actions && actions.map(component => component)}
+      </Title>
+      <ActionItems>
+        {actions && actions.map(component => component)}
+      </ActionItems>
     </Toolbar>
   </AppBar>
 );
