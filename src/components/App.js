@@ -25,8 +25,8 @@ class App extends Component {
         localStorage.setItem('userToken', userToken);
       })
       .catch(error => {
-        console.log('Error getting user token:' + error);
-        this.setState({ ...this.state, userToken: null });
+        console.log(`Error getting user token: ${error}`);
+        this.setState({ userToken: null });
         localStorage.removeItem('userToken');
       });
   }
@@ -34,7 +34,7 @@ class App extends Component {
   logoutUser() {
     firebase.auth().signOut();
     localStorage.removeItem('userToken');
-    this.setState({ ...this.state, userToken: null });
+    this.setState({ userToken: null });
   }
 
   componentDidMount() {
@@ -48,7 +48,7 @@ class App extends Component {
   }
 
   /**
-   * Function responsible for showing the app in an signed in state.
+   * @returns {JSX} Application in a signed in state
    */
   userLoggedIn = () => (
     <Router>
@@ -60,6 +60,7 @@ class App extends Component {
    * Function responsible for showing the app when no user is signed in.
    * Including some information about the app and most importantly directs to
    * sign in.
+   * @returns {JSX} Application in signed out state
    */
   noUser = () => (
     <Router>

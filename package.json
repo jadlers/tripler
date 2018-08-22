@@ -6,6 +6,7 @@
     "@material-ui/core": "^1.4.3",
     "@material-ui/icons": "^2.0.1",
     "firebase": "^5.3.1",
+    "firebaseui": "^3.3.0",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
     "react-firebaseui": "^3.0.4",
@@ -18,9 +19,12 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "format": "prettier --write src/**/*.{js,jsx,json,css} *.{json,yaml,md}"
+    "format": "prettier --write src/**/*.{js,jsx,json,css} *.{js,json,yaml,md}"
   },
   "devDependencies": {
+    "eslint": "^5.4.0",
+    "eslint-config-kentcdodds": "^14.0.0",
+    "eslint-plugin-react": "^7.11.1",
     "prettier": "1.14.2",
     "tern": "^0.21.0"
   }

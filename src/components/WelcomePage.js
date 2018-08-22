@@ -24,7 +24,7 @@ const WelcomePage = () => {
 
   return (
     <div>
-      <Header title={'TripleR'} actions={headerActions} />
+      <Header title="TripleR" actions={headerActions} />
 
       <StyledCard raised>
         <CardContent>

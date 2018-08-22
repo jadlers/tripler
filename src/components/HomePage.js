@@ -1,12 +1,12 @@
 import React from 'react';
-import firebase from '../firebase/firebase';
 import styled from 'styled-components';
 
-import ExitToAppRounded from '@material-ui/icons/ExitToAppRounded';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
+import ExitToAppRounded from '@material-ui/icons/ExitToAppRounded';
 import IconButton from '@material-ui/core/IconButton';
 
+import firebase from '../firebase/firebase';
 import Header from './Header';
 
 const StyledCard = styled(Card)`

@@ -1,8 +1,8 @@
 import React from 'react';
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
-import firebase from '../firebase/firebase';
 import firebaseui from 'firebaseui';
 
+import firebase from '../firebase/firebase';
 import * as routes from '../constants/routes';
 
 const LoginPage = () => {
