@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import Card from '@material-ui/core/Card';
@@ -38,6 +39,10 @@ const HomePage = ({ logoutUser }) => {
       </StyledCard>
     </div>
   );
+};
+
+HomePage.propTypes = {
+  logoutUser: PropTypes.func,
 };
 
 export default HomePage;

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import AppBar from '@material-ui/core/AppBar';
@@ -27,5 +28,10 @@ const Header = ({ title, actions }) => (
     </Toolbar>
   </AppBar>
 );
+
+Header.propTypes = {
+  title: PropTypes.string,
+  actions: PropTypes.arrayOf(PropTypes.element),
+};
 
 export default Header;
