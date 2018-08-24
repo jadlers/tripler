@@ -9,6 +9,7 @@ import IconButton from '@material-ui/core/IconButton';
 
 import firebase from '../firebase/firebase';
 import Header from './Header';
+import Recorder from './Recorder';
 
 const StyledCard = styled(Card)`
   margin: 0.5em;
@@ -37,6 +38,7 @@ const HomePage = ({ logoutUser }) => {
       <StyledCard>
         <CardContent>Welcome {welcomeName}</CardContent>
       </StyledCard>
+      <Recorder />
     </div>
   );
 };
