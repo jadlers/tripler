@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import { ReactMic } from 'react-mic';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
+// Components
+import { ReactMic } from 'react-mic';
 import Card from '@material-ui/core/Card';
 import BaseButton from '@material-ui/core/ButtonBase';
-import IconButton from '@material-ui/core/IconButton';
-import PlayArrowRounded from '@material-ui/icons/PlayArrowRounded';
 
 const StyledCard = styled(Card)`
   display: flex;
@@ -36,7 +36,6 @@ class Recorder extends Component {
     super(props);
     this.state = {
       record: false,
-      audioUrl: null,
     };
   }
 
@@ -48,52 +47,29 @@ class Recorder extends Component {
     this.setState({ record: !record });
   };
 
-  /**
-   * Saves the URL to the recording in the components state
-   * @param {Object} recorded Audio blob with the made recording
-   */
-  onStop = recorded => {
-    this.setState({ audioUrl: recorded.blobURL });
-  };
-
-  /**
-   * Plays the most recent recording made.
-   */
-  playRecording = () => {
-    const { audioUrl } = this.state;
-    if (!audioUrl) return;
-
-    const audio = new Audio(this.state.audioUrl);
-    audio.play();
-  };
-
   render() {
-    const { record, audioUrl } = this.state;
+    const { record } = this.state;
     return (
-      <div>
-        <StyledCard>
-          <StyledBaseButton
-            style={{ borderRadius: '50%' }}
-            onClick={this.toggleRecording}
-            focusRipple
-          >
-            <StyledMic
-              record={record}
-              backgroundColor="#eee"
-              strokeColor="#3f51b5"
-              onStop={this.onStop}
-            />
-          </StyledBaseButton>
-        </StyledCard>
-        <StyledCard>
-          <IconButton disabled={!audioUrl} onClick={this.playRecording}>
-            <PlayArrowRounded />
-          </IconButton>
-          Here will be a player
-        </StyledCard>
-      </div>
+      <StyledCard>
+        <StyledBaseButton
+          style={{ borderRadius: '50%' }}
+          onClick={this.toggleRecording}
+          focusRipple
+        >
+          <StyledMic
+            record={record}
+            backgroundColor="#eee"
+            strokeColor="#3f51b5"
+            onStop={this.props.saveSource}
+          />
+        </StyledBaseButton>
+      </StyledCard>
     );
   }
 }
+
+Recorder.propTypes = {
+  saveSource: PropTypes.func,
+};
 
 export default Recorder;

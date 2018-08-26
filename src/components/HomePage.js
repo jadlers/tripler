@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
@@ -10,38 +10,62 @@ import IconButton from '@material-ui/core/IconButton';
 import firebase from '../firebase/firebase';
 import Header from './Header';
 import Recorder from './Recorder';
+import AudioPlayer from './AudioPlayer';
 
 const StyledCard = styled(Card)`
   margin: 0.5em;
 `;
 
-const HomePage = ({ logoutUser }) => {
-  const user = firebase.auth().currentUser;
-  let welcomeName = '';
-  if (user && user.displayName) {
-    welcomeName = user.displayName;
-  } else if (user && user.email) {
-    welcomeName = user.email.split('@')[0];
+class HomePage extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      audioSource: null,
+    };
   }
 
-  const logoutAction = (
-    <IconButton onClick={logoutUser} key="logoutUser" color="inherit">
+  logoutAction = (
+    <IconButton
+      onClick={this.props.logoutUser}
+      key="logoutUser"
+      color="inherit"
+    >
       <ExitToAppRounded />
     </IconButton>
   );
 
-  const headerActions = [logoutAction];
+  /**
+   * Save the audioURL from a blob as the new audioUrl
+   * @param {Object} blob including information about the recording
+   */
+  saveSource = blob => {
+    this.setState({ audioSource: blob.blobURL });
+  };
 
-  return (
-    <div>
-      <Header title="Home" actions={headerActions} />
-      <StyledCard>
-        <CardContent>Welcome {welcomeName}</CardContent>
-      </StyledCard>
-      <Recorder />
-    </div>
-  );
-};
+  render() {
+    const user = firebase.auth().currentUser;
+    let welcomeName = '';
+    if (user && user.displayName) {
+      welcomeName = user.displayName;
+    } else if (user && user.email) {
+      welcomeName = user.email.split('@')[0];
+    }
+
+    const headerActions = [this.logoutAction];
+
+    return (
+      <div>
+        <Header title="Home" actions={headerActions} />
+        <StyledCard>
+          <CardContent>Welcome {welcomeName}</CardContent>
+        </StyledCard>
+        <Recorder saveSource={this.saveSource} />
+        <AudioPlayer source={this.state.audioSource} />
+      </div>
+    );
+  }
+}
 
 HomePage.propTypes = {
   logoutUser: PropTypes.func,
